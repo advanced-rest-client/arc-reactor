@@ -1,4 +1,4 @@
-# arc-reactor
+# wc-reactor
 
 Node module to create React components wrappers for web components. The module is a part of Advanced REST Client ecostsrem.
 
@@ -11,7 +11,7 @@ binding (in a React way).
 ## Example
 
 ```javascript
-const reactor = require('arc-reactor');
+const reactor = require('wc-reactor');
 
 reactor({
   // Polymer web component import file or Polymer bundle.

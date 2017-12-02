@@ -1,5 +1,5 @@
 {
-  "name": "arc-reactor",
+  "name": "wc-reactor",
   "version": "0.1.0",
   "license": "Apache-2.0 OR CC-BY-4.0",
   "description": "Node module to create a React wrapper from web components",
@@ -21,10 +21,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/advanced-rest-client/arc-reactor.git"
+    "url": "git://github.com/advanced-rest-client/wc-reactor.git"
   },
   "bugs": {
-    "url": "https://github.com/advanced-rest-client/arc-reactor/issues",
+    "url": "https://github.com/advanced-rest-client/wc-reactor/issues",
     "email": "arc@mulesoft.com"
   },
   "engines": {
