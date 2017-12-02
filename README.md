@@ -1,6 +1,6 @@
 # wc-reactor
 
-Node module to create React components wrappers for web components. The module is a part of Advanced REST Client ecostsrem.
+Node module to create React components wrappers for web components. The module is a part of Advanced REST Client ecosystem.
 
 # What does it do?
 
