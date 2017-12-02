@@ -1,0 +1,43 @@
+<dom-module id="test-element">
+  <template>
+    <style>
+    :host {
+      display: block;
+    }
+    </style>
+  </template>
+  <script>
+  Polymer({
+    is: 'test-element',
+    properties: {
+      test1: String,
+      test2: {
+        type: String,
+        notify: true
+      },
+      test3: {
+        type: String,
+        notify: true,
+        readOnly: true
+      },
+      test4: {
+        type: String,
+        readOnly: true
+      }
+    },
+
+    ready() {},
+    publicMethod() {},
+    publicMethodWithArguments(arg1, arg2) {},
+    _protectedMethod() {}
+
+    /**
+     * @event test-event-a
+     */
+    /**
+     * @event test-event-b
+     * @param {String} arg
+     */
+  });
+  </script>
+</dom-module>
