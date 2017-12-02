@@ -172,58 +172,23 @@ to the function.
 
 ## API
 
-All options are defined in `lib/project-options.js`.
+All options are defined in `lib/options.js`.
 
-**arcComponents** {`Array<String>`}
+**webComponent** {`String`}
 
-A list of ARC web components to be used.
-It should be a list of names of the components only, without `advanced-rest-client/`
-prefix as it will be added by the program.
+A path to a Polymer powered web component to analyze and build the React wrapper for.
 
-You can control version of the component by adding version number for the
-components as in npm or bower.
-
-Example: `['paper-autocomplete#1.0.0', 'raml-request-panel#^1.1.0']`
-
-**webComponents** {`Array<String>`}
-
-The same as `arcComponents` but it must be full bower definition of the component dependency.
-
-Example: `['PolymerElements/paper-input', 'PolymerElements/paper-icon-button#1.0.0']`
-
-**style** `{String}`
-
-Path to `custom-style` module with theme definition for the ARC / web components.
-
-**dev** `{Boolean}`
-
-If set it will not create a bundle file but only an import file with
-references to `bower_components` directory where the source code of the elements
-is downloaded. It can be helpful for dubugging when you want to debug specific
-element without braking current dev setup.
-
-The build directory contains the import file and `bower_components`. Both should
-be copied to server and put into the same location.
-
-**react** `{Boolean}`
-
-Specify to generate React components definition from the elements.
-Generated source file contains classes definitions for each component with access
-points to all public APIs of the element (properties, functions and custom events).
+It can be a single web component declaration or a bundle file of Polymer web components.
 
 **reactComponents** {`Array<String>`}
 
-List of web components names to be exposed to generated React component so it can
-be included in React application.
+List of web components names to be exposed to generated React component so it can be included in React application.
 
-Defining this option is optional. By default all listed components in `arcComponents`
-and `webComponents` properties are exposed to React application.
+Defining this option is optional. By default all components found in the `webComponent` file are processed and wrapped into React component.
 
-To reduce size of generated code it is a good idea to declare number of components
-that your application is actually using.
+To reduce size of generated code it is a good idea to declare number of components that your application is using. If the `webComponent` file is a bundle of web components you can reduce generated file by setting this property.
 
 Provide list of components names only, without any repository path or version information.
-
 For example `['raml-request-panel', 'paper-input']`
 
 **dest** `{String}`
@@ -231,6 +196,14 @@ For example `['raml-request-panel', 'paper-input']`
 The destination where the build files are put. Absolute or relative path.
 
 By default it puts the files into `build` directory of the working dir.
+
+**bundle** `{Boolean}`
+
+By default it creates a separate file for each web component found in `webComponent` file. When this option is set then it bundles all React components into a single file and exports each React component.
+
+**bundleName** `{String}`
+
+File name of generated component. It defaults to `WebComponents.js`. This is only relevant if `bundle` is set. Otherwise each file name is a web component name.
 
 **logger** `{Object}`
 
