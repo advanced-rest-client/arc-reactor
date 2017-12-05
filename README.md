@@ -79,10 +79,31 @@ custom events (including properties change events) and to call public API functi
 
 ### Properties mapping
 
-Web components properties names are the same as React's `props`. So you can use
+Web components property names are the same as React's `props`. So you can use
 generated component like this:
 
 ```javascript
+render() {
+  return (
+    <PaperCombobox label="My label" value={this.props.value}/>
+  );
+}
+```
+
+When the `PaperCombobox` component is mounted then the `label` and `value` properties
+are propagated to the underlying web component. The same is happening each time
+when React's state change:
+
+```javascript
+/**
+ * Updates list of suggestion in the PaperCombobox web component
+ */
+updateSuggestions() {
+  this.setState({
+    source: ['One', 'Two', 'Three']
+  });
+}
+
 render() {
   return (
     <PaperCombobox label="My label" source={this.state.source}/>
@@ -90,15 +111,6 @@ render() {
 }
 ```
 
-When the `PaperCombobox` component is mounted then the `label` and `source` props
-are propagated to the underlying web component. The same is happening each time
-when React state change:
-
-```javascript
-this.setState({
-  source: ['One', 'Two', 'three']
-});
-```
 Updating the sate value will update corresponding web component's property.
 
 #### Polymer's data binding
@@ -106,8 +118,7 @@ Updating the sate value will update corresponding web component's property.
 Polymer powered web components uses Polymer's data binding for properties. This
 can be easily done in react by using `on` + `propertyName` + `Changed` function set to a property.
 
-Assume that our `PaperCombobox` web component has `value` property marked in
-Polymer web components as `notify` (sends non-bubbling custom event when value change).
+Assuming that the `PaperCombobox` web component has `value` property that `notify` value change (sends non-bubbling custom event when value changes).
 You can handle it in React application using functions:
 
 ```javascript
@@ -123,14 +134,14 @@ render() {
 }
 ```
 
-New value and original event is always passed to data binding change function calls. You can use event to access additional data.
+New value and original event is always passed to data binding change function calls. You can use event to access additional data like information about the target or path. Note, that target may not be the web component but an element inside it.
 
-Note: Only public properties are handled by the wrapper. It doesn't work with protected properties (name is starting with `_`).
+Note: Only public properties are handled by the wrapper. It doesn't work with protected properties (property name starts with `_`).
 
 ### Methods mapping
 
-Methods are copied 1:1 from the web component. Only public methods are available in the wrapper.
-Lifecycle methods are also unavailable.
+Methods are mapped 1:1 from the web component. Only public methods are available to wrapper.
+Web component's lifecycle methods are also unavailable.
 
 Let's assume that the `PaperCombobox` element has a `selectNext` method in it's public API:
 
@@ -149,9 +160,12 @@ render() {
 ### Events mapping
 
 Custom events names are translated to camel case function call as:
-`on` + `UppercaseCamelCaleEventName`.
+`on` + `UppercaseCamelCaseEventName`.
 
 Custom event's detail object and the event itself is passed as an argument to the function call.
+
+Assuming that the `paper-combobox` web components dispatches `next-selected` event. It can be handled by
+setting `onNextSelected` property on the components that is a handler for event.
 
 ```javascript
 _comboNextSelected(detail, e) {
@@ -169,6 +183,11 @@ render() {
 
 The script above handles the `next-selected` event and passes the detail of the event
 to the function.
+
+### More examples
+
+Checkout our example build usage project to see how to use generated module in
+React application: https://github.com/advanced-rest-client/arc-components-builder-example
 
 ## API
 
