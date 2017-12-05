@@ -8,6 +8,12 @@ It **generates a React wrapper for web components** so it can be used in React a
 It creates exactly the same interface as web components uses. It handles all custom events, property change events and data
 binding (in a React way).
 
+## Installation
+
+```
+$ npm i --save-dev wc-reactor
+```
+
 ## Example
 
 ```javascript
