@@ -16,11 +16,11 @@ const reactor = require('wc-reactor');
 reactor({
   // Polymer web component import file or Polymer bundle.
   webComponent: 'component-or-bundle.html',
-  // Default deftination where to put files.
+  // Default destination where to put files.
   dest: './build/',
   // print a lot of stuff unto the console
   verbose: true,
-  // Creates separateb component definition for each module
+  // Creates separate component definition for each module
   bundle: false
 });
 .then(() => console.log('Build complete <3'));
