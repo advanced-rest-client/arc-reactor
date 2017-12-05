@@ -29,7 +29,7 @@ describe('Options test', () => {
       verbose: '0',
       logger: true,
       dest: 1234,
-      componentName: [],
+      bundleName: [],
       bundle: 'true'
     });
 
@@ -69,10 +69,9 @@ describe('Options test', () => {
         error: function() {}
       },
       dest: 'test',
-      componentName: 'test',
+      bundleName: 'test',
       bundle: true
     });
-
     assert.isTrue(instance.isValid, 'isValid is true');
     assert.lengthOf(instance.validationErrors, 0, 'Errors list is empty');
     assert.lengthOf(instance.validationWarnings, 0, 'Warning list is empty');
