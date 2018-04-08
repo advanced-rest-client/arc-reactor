@@ -4,7 +4,7 @@ const {Reactive} = require('../lib/reactive');
 const {ArcComponentsAnalyzer} = require('../lib/analyzer');
 const assert = require('chai').assert;
 
-const bundleFile = 'test/bundle.html';
+const bundleFile = 'test/bundle-polymer2.html';
 const logger = {
   log: function() {},
   warn: function() {},
@@ -15,7 +15,7 @@ const opts = {
   dest: 'test/build/'
 };
 
-describe('Reactive test - Polymer 1', function() {
+describe('Reactive test - Polymer 2', function() {
   let analysis;
   before(() => {
     const analyzer = new ArcComponentsAnalyzer(bundleFile, logger);
@@ -256,6 +256,10 @@ describe('Reactive test - Polymer 1', function() {
         assert.notEqual(
           result.indexOf('this._refElement.test1 = this.props.test1;'), -1);
       });
+
+      it('Does not contain Polymer properties', function() {
+        assert.equal(result.indexOf('importPath'), -1);
+      });
     });
 
     describe('_getClassUnmoutCallback()', function() {
@@ -298,6 +302,10 @@ describe('Reactive test - Polymer 1', function() {
           result.indexOf('this._refElement.test3 = this.props.test3;'), -1);
         assert.equal(
           result.indexOf('this._refElement.test4 = this.props.test4;'), -1);
+      });
+
+      it('Does not contain Polymer properties', function() {
+        assert.equal(result.indexOf('importPath'), -1);
       });
     });
 
@@ -350,14 +358,9 @@ describe('Reactive test - Polymer 1', function() {
         assert.notEqual(index, -1);
       });
 
-      it('Declates getters', function() {
-        const index = result.indexOf('get getterMethod()');
-        assert.notEqual(index, -1);
-      });
-
-      it('Getters takes a value from the element', function() {
-        const index = result.indexOf('return this._refElement.getterMethod;');
-        assert.notEqual(index, -1);
+      it('Does not have Polymer methods', function() {
+        const index = result.indexOf('attributeChangedCallback()');
+        assert.equal(index, -1);
       });
     });
 

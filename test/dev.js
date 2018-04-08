@@ -1,7 +1,7 @@
 const reactor = require('../');
 
 reactor({
-  webComponent: 'test/bundle.html',
+  webComponent: 'test/bundle-polymer2.html',
   verbose: true,
   dest: 'test/build/',
   logger: console,

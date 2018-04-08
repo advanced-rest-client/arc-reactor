@@ -1,0 +1,73 @@
+<link rel="import" href="bower_components/polymer/polymer-element.html">
+
+<dom-module id="test-element">
+  <template>
+    <style>
+    :host {
+      display: block;
+    }
+    </style>
+  </template>
+  <script>
+  class TestElement extends Polymer.Element {
+    static get is() { return 'test-element' };
+    static get properties() {
+      return {
+        test1: String,
+        test2: {
+          type: String,
+          notify: true
+        },
+        test3: {
+          type: String,
+          notify: true,
+          readOnly: true
+        },
+        test4: {
+          type: String,
+          readOnly: true
+        }
+      };
+    }
+    /**
+     * Somethig
+     * @return {String} something
+     */
+    get getterMethod() {
+      return '';
+    }
+
+    ready() {}
+    publicMethod() {}
+    publicMethodWithArguments(arg1, arg2) {}
+    _protectedMethod() {}
+
+    /**
+     * @event test-event-a
+     */
+    /**
+     * @event test-event-b
+     * @param {String} arg
+     */
+  }
+  window.customElements.define(TestElement.is, TestElement);
+  </script>
+</dom-module>
+<dom-module id="other-element">
+  <template>
+    <style>
+    :host {
+      display: block;
+    }
+    </style>
+  </template>
+  <script>
+  class OtherElement extends Polymer.Element {
+    static get is() { return 'other-element' };
+    ready() {},
+    attached() {},
+    detatched() {}
+  }
+  window.customElements.define(OtherElement.is, OtherElement);
+  </script>
+</dom-module>

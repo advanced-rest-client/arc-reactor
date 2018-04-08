@@ -4,6 +4,7 @@
   "license": "Apache-2.0 OR CC-BY-4.0",
   "description": "Node module to create a React wrapper from web components",
   "devDependencies": {
+    "bower": "^1.8.4",
     "chai": "^3.5.0",
     "mocha": "^3.2.0"
   },
@@ -17,7 +18,7 @@
   "main": "index.js",
   "author": "The Advanced REST client authors <arc@mulesoft.com>",
   "scripts": {
-    "test": "mocha test/*.test.js"
+    "test": "test/install-bower.sh && mocha test/*.test.js"
   },
   "repository": {
     "type": "git",

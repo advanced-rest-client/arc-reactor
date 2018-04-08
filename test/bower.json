@@ -1,0 +1,12 @@
+{
+  "name": "test-element",
+  "authors": [
+    "Pawel Psztyc"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#^2.0.0"
+  },
+  "resolutions": {
+    "polymer": "^2.0.0"
+  }
+}
