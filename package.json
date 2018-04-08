@@ -1,6 +1,6 @@
 {
   "name": "wc-reactor",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "license": "Apache-2.0 OR CC-BY-4.0",
   "description": "Node module to create a React wrapper from web components",
   "devDependencies": {
